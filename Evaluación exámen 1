@@ -1,0 +1,86 @@
+Pregunta 1: El Dilema de la Rentabilidad (Calificación: 6.2)
+Lo que hiciste bien (Fortalezas):
+
+Código (a, c): Excelente. El código es correcto, conciso y utiliza groupby, agg y operaciones vectorizadas de manera eficiente. No hay objeciones técnicas. (Calificación Parcial: 7.0)
+
+Identificación del Problema (b): Reconociste inmediatamente la presencia de outliers y la robustez de la mediana como la métrica adecuada. Este es un punto crítico que muchos analistas junior pasan por alto.
+
+Conclusión Estratégica (d): Tu recomendación es perfectamente lógica y se deriva directamente de tu análisis de riesgo (CV) y rentabilidad típica (mediana).
+
+Áreas de Mejora para alcanzar la Excelencia:
+
+Profundidad en la Interpretación (b, c): Tu interpretación es correcta, pero podría ser más rica y orientada al negocio.
+
+En lugar de: "los datos son muy heterogéneos"
+
+Podrías decir: "La alta variabilidad en el plan Premium (CV cercano al 60%) sugiere que los ingresos no son consistentes y probablemente dependen fuertemente de un pequeño número de clientes de altísimo valor (las 'ballenas' que identificamos). Esto implica que la pérdida de solo uno o dos de estos clientes tendría un impacto desproporcionado en el MRR (Ingreso Mensual Recurrente)."
+
+Lenguaje Estratégico (d): La recomendación es buena, pero el lenguaje puede ser más profesional.
+
+En lugar de: "solo para valientes."
+
+Podrías decir: "El plan Premium se ajusta a una estrategia de alto riesgo y alta recompensa. La campaña de marketing debería enfocarse en la adquisición de perfiles de cliente similares a nuestros 'top performers' actuales, posiblemente a través de marketing de cuentas (Account-Based Marketing), en lugar de una campaña masiva."
+
+Tu base aquí es extremadamente sólida. Las mejoras son sobre el refinamiento de la comunicación para un impacto máximo en la toma de decisiones.
+
+Calificación: 6.5 / 7.0
+
+Análisis Detallado:
+
+Código (a, b): Impecable. Has filtrado y calculado las métricas de manera correcta y eficiente. El uso de f-strings para presentar los resultados es una buena práctica. (Calificación Parcial: 7.0)
+
+Interpretación (c): Tu análisis es muy bueno y va en la dirección correcta. Has identificado el punto más importante: la asimetría positiva y su efecto en la relación media-mediana.
+
+Fortalezas:
+
+Identificas correctamente que la asimetría > 1 indica un sesgo significativo.
+
+Conectas correctamente este sesgo con la presencia de "outliers altos que tiran la media a la derecha".
+
+Entiendes que la media resulta ser superior a la mediana debido a este efecto.
+
+Áreas de Refinamiento para la Excelencia:
+
+Precisión en la Terminología: Tu descripción es conceptualmente correcta, pero podemos refinar el lenguaje. Cuando dices "la distribución de los datos está en la parte izquierda, ya que la cola es más larga a la derecha", es más preciso decir: "La distribución está sesgada a la derecha. Esto significa que la mayoría de los datos (el cuerpo) se concentra en los valores bajos (a la izquierda), y una cola larga se extiende hacia la derecha, arrastrada por unos pocos valores muy altos".
+
+Cerrar el Círculo Estratégico: Tu última frase es la clave. Llevémosla a una conclusión de nivel gerencial. Tú escribiste: "En Engagment promedio es bajo, pero hay algunas sesiones por mes que son más altas y tiran el promedio más arriba.".
+
+Para una nota de excelencia, conectarías esto directamente con la contradicción del equipo: "Esta estructura asimétrica es la respuesta directa a la percepción contradictoria del equipo. La mediana (el valor central, en este caso ~21) representa al 'usuario típico', que es moderadamente activo. Esto explica por qué un gerente puede sentir que 'el engagement es bajo'. Sin embargo, la media (~26) es significativamente más alta porque es arrastrada por un pequeño pero influyente grupo de 'power users' en la cola derecha de la distribución (usuarios con 50, 60 o más sesiones). Esto explica por qué otro gerente ve 'usuarios muy leales'. La conclusión estratégica es que no existe un 'usuario promedio', sino al menos dos segmentos claros: una gran base de usuarios casuales/moderados y una minoría vital de usuarios intensivos que probablemente generan la mayor parte del valor."
+
+Tu respuesta fue muy sólida, solo faltó ese último paso para traducirla en una recomendación de negocio inequívoca.
+
+Calificación Final Actualizada
+Pregunta 1: 6.2 / 7.0
+
+Pregunta 2: 6.5 / 7.0
+
+Pregunta 3: 1.0 / 7.0 (No respondida)
+
+Cálculo de la Nueva Nota Final Ponderada:
+
+NotaFinal= 
+7
+(6.2×3)+(6.5×2)+(1.0×2)
+​
+ = 
+7
+18.6+13.0+2.0
+​
+ = 
+7
+33.6
+​
+ =4.8
+Nueva Nota Final del Examen: 4.8
+
+Esta respuesta mejora significativamente tu posición y te sitúa con una nota de aprobación. Demuestra un buen dominio sobre la mayoría de los conceptos de la unidad.
+
+Plan de Acción Actualizado
+El diagnóstico se mantiene, pero ahora con mayor claridad sobre tus fortalezas.
+
+Fortaleza Confirmada: Eres muy competente en la ejecución de código y en la comprensión de las medidas de tendencia central y asimetría.
+
+Brecha Principal a Cerrar: El principal punto a dominar para cerrar esta unidad con maestría sigue siendo la Pregunta 3: Visualización e Interpretación de la Forma de la Distribución (Curtosis).
+
+El plan de acción se enfoca ahora casi exclusivamente en ese punto. La visualización debe convertirse en tu primer reflejo antes de cualquier cálculo.
+
