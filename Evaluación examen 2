@@ -1,0 +1,85 @@
+He recibido la totalidad de sus respuestas. El examen ha concluido.
+
+Procedo ahora a entregar la evaluación final. Será exhaustiva, estricta y directa, diseñada para cumplir nuestro objetivo: forjar un profesional de élite.
+
+### **Evaluación y Calificación Final**
+
+  * **Pregunta 1:** 5.8 / 7.0
+  * **Pregunta 2:** 6.0 / 7.0
+  * **Pregunta 3:** 5.0 / 7.0
+
+**Cálculo de la Nota Final Ponderada:**
+La ponderación se basa en la puntuación de cada pregunta (2, 2.5, y 2.5 puntos respectivamente).
+$$Nota Final = \frac{(5.8 \times 2) + (6.0 \times 2.5) + (5.0 \times 2.5)}{7} = \frac{11.6 + 15.0 + 12.5}{7} = \frac{39.1}{7} \approx 5.6$$
+
+**Nota Final del Examen: 5.6**
+
+Has aprobado este riguroso examen. Tu desempeño demuestra una competencia técnica sólida y una intuición analítica en desarrollo. Sin embargo, la diferencia entre un 5.6 y un 7.0 es la diferencia entre un analista competente y un estratega de datos indispensable. Analicemos esa brecha.
+
+-----
+
+### **Análisis Detallado por Pregunta**
+
+#### **Pregunta 1: Análisis de la Experiencia del Cliente (Calificación: 5.8)**
+
+  * **Código:** Impecable. 7.0/7.0.
+  * **Interpretación:**
+      * **(a) Rango:** Tu interpretación fue superficial. El rango solo informa sobre los dos puntos más extremos, ignorando la distribución del 99% de los datos. Concluir que los datos "no están tan dispersos" solo a partir del rango es una afirmación débil y potencialmente errónea.
+      * **(b) Percentil 85:** Tu definición fue perfecta, una descripción de libro de texto. Sin embargo, un analista de élite traduce esa definición en una implicancia de negocio: "El hecho de que el 85% de los clientes califique la categoría 'Hogar' con 4.9 o menos, y que el rating promedio sea tan alto, nos dice que la vara es muy alta. Una calificación de '4' en esta categoría, que en otros contextos sería buena, aquí es una señal de bajo rendimiento relativo."
+      * **(c) 30% Central:** Esta fue tu mejor interpretación. Conectaste la estrechez del rango inter-percentil (4.33 a 4.71) con la **consistencia** de la experiencia y propusiste una acción ("investigar qué puede marcar la diferencia"). Este es el nivel de pensamiento que se busca.
+
+#### **Pregunta 2: Perfiles de Riesgo y Oportunidad (Calificación: 6.0)**
+
+  * **Código:** Excelente. Mostraste iniciativa al calcular el CV aunque no se pedía. 7.0/7.0.
+  * **Interpretación:**
+      * **(a) Asimetría:** Tu análisis de 'Electrónica' fue **magistral**. Identificaste la asimetría positiva y la tradujiste perfectamente a un escenario de negocio: "menores valores de ventas pero con algunas sorpresas... pocos clientes que han comprado grandes valores". Perfecto. Sin embargo, cometiste un error crucial con 'Hogar'. Su asimetría era de `-0.01`. Si bien el signo es negativo, la **magnitud** es insignificante. La conclusión correcta era: "La distribución de 'Hogar' es **prácticamente simétrica**, lo que implica que las ventas son predecibles y no dependen de outliers, a diferencia de 'Electrónica'". **Lección clave: Interpreta la magnitud, no solo el signo.**
+      * **(b) Curtosis:** Tu interpretación de 'Hogar' (platicúrtica) fue muy buena, asociándola correctamente con pocas sorpresas. Para 'Ropa', identificaste la implicancia correcta de la curtosis positiva: "posibles cisnes negros... demoras excesivas". Excelente traducción del riesgo. No obstante, te perdiste la verdadera historia de los datos, lo que nos lleva directamente a la Pregunta 3.
+
+#### **Pregunta 3: El Informe del Consultor (Calificación: 5.0)**
+
+Aquí es donde se revela la brecha más importante entre tu nivel actual y el nivel de élite.
+
+**Lo que hiciste bien:**
+
+  * Identificaste correctamente que la enorme diferencia entre la media (`~42h`) y la mediana (`~24h`) era el corazón del problema.
+  * Usaste la asimetría positiva para deducir correctamente que unos pocos valores extremos estaban inflando el promedio.
+  * Tu recomendación ("analizar qué está pasando con los SKU que se demoran tanto") es lógica y un buen primer paso.
+
+**La Oportunidad Perdida (El Error Crítico):**
+Tu análisis entero se basó en métricas de resumen. **Nunca visualizaste la distribución.** Si hubieras ejecutado una simple línea de código, habrías visto la verdad:
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.histplot(data=df[df['categoria_producto'] == 'Ropa'], x='tiempo_entrega_horas', kde=True)
+plt.title('Distribución REAL del Tiempo de Entrega para "Ropa"')
+plt.show()
+```
+
+La distribución no es una campana con una cola larga. Es **BIMODAL**. Hay dos realidades completamente distintas:
+
+1.  Un gran grupo de entregas ultra-rápidas (\~24h).
+2.  Un grupo más pequeño pero significativo de entregas catastróficamente lentas (\~120h).
+
+Tu conclusión fue que "la experiencia por lo general es buena, pero hay algunos outliers". La realidad es que **la operación logística está fracturada**. No son "outliers"; es un segundo proceso sistémico que está fallando.
+
+**Un Informe de Nivel Élite habría dicho:**
+*"Jefe de Logística, el 'promedio' de 42 horas es una métrica inútil que oculta la verdad. Nuestra operación para 'Ropa' no tiene un problema, tiene dos procesos distintos. Aproximadamente el 80% de los pedidos se procesan a través de un canal altamente eficiente con entregas en torno a las 24 horas, lo que genera las felicitaciones. El 20% restante, sin embargo, cae en un 'agujero negro' logístico, con entregas que promedian las 120 horas (5 días), generando las quejas. El problema no son 'algunas demoras', es una bifurcación sistémica en nuestro proceso. Mi recomendación es auditar de inmediato el flujo de pedidos de 'Ropa' para identificar el punto exacto donde se produce esta desviación y por qué."*
+
+-----
+
+### **Consejos para un Profesional de ÉLITE**
+
+1.  **VISUALIZA PRIMERO, CALCULA DESPUÉS.** Este es el mandamiento más importante. Las estadísticas resumen, las visualizaciones revelan. Un histograma te habría contado el 90% de la historia de la Pregunta 3 en 5 segundos. Antes de calcular `.mean()`, `.skew()` o `.kurtosis()`, siempre, siempre haz un `.histplot()`.
+2.  **INTERPRETA LA MAGNITUD, NO SOLO EL SIGNO.** Como vimos en la Pregunta 2, una asimetría de -0.01 es, en la práctica, cero. Un resultado estadísticamente "no cero" no siempre es significativo para el negocio. Pregúntate siempre: ¿es esta diferencia lo suficientemente grande como para actuar sobre ella?
+3.  **TRADUCE DEFINICIONES EN DECISIONES.** No te limites a definir qué es el percentil 85. Explica qué decisión de negocio te permite tomar esa información. Cada métrica debe ser un arma en tu arsenal para persuadir, decidir y actuar.
+4.  **CONSTRUYE UNA NARRATIVA.** Tu análisis no debe ser una lista de estadísticas. Debe ser una historia convincente: El problema (quejas contradictorias) -\> La investigación (análisis de la distribución) -\> El diagnóstico revelador (proceso logístico fracturado) -\> La solución recomendada (auditar el punto de bifurcación).
+
+### **Veredicto Final**
+
+Has demostrado una gran capacidad y un progreso notable. Has aprobado un examen diseñado para ser difícil. La base técnica es sólida.
+
+El siguiente paso en tu viaje es dejar de pensar como un estudiante que responde preguntas y empezar a pensar como un detective que resuelve casos. El detective no solo analiza las pistas (las estadísticas); primero observa la escena del crimen (la visualización) para entender el contexto completo.
+
+Internaliza estos consejos, haz de la visualización un reflejo instintivo, y estarás listo para enfrentar la incertidumbre de la probabilidad en la siguiente unidad. El fundamento está construido. Ahora comienza el verdadero ascenso.
